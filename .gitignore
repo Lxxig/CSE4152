@@ -1,74 +1,85 @@
-# Visual Studio 2022 .gitignore
-# 이 파일은 Git이 의도적으로 추적하지 말아야 할 파일을 지정합니다.
+# # Rider와 Visual Studio 2022 통합 .gitignore
+# 이 파일은 JetBrains Rider와 Visual Studio에서 자동 생성되는 파일,
+# 빌드 결과물, 그리고 사용자별 설정 파일을 Git 추적에서 제외합니다.
 
-## User-specific files
-# 사용자별 솔루션 및 프로젝트 옵션 파일
+# ## IDE 및 에디터 설정 #
+# -------------------------------------------------------------------
+# JetBrains Rider
+.idea*/
+*.sln.dotsettings.user
+
+# Visual Studio
+.vs/
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
+*.sln.opts
+*.vssscc
+*.vspscc
 
-## Visual Studio generated files
-# Visual Studio IDE 및 빌드 프로세스에서 생성되는 파일
-.vs/
-*.sln.metaproj
-*.csproj.metaproj
-*.vcxproj.metaproj
-*.vcxproj.filters
-*.pdb
-*.ipdb
-*.APS
-*.opensdf
-*.sdf
-*.tlog
-*.log
-*.tmp
-*.tmp_proj
-*.cache
-*.rsp
-
-## Build results
-# 빌드 결과물 및 중간 파일 (컴파일된 바이너리, 객체 파일 등)
-[Bb]uild/
-[Bb]uildLog.*
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-[Oo]bj/
+# ## 빌드 결과물 #
+# -------------------------------------------------------------------
+# 빌드 출력 폴더 (대소문자 구분 없이)
 [Bb]in/
-[Ii]ntermediate/
+[Oo]bj/
 
-## Packages
-# NuGet 패키지 및 관련 파일
-packages/
+# ## NuGet 관련 #
+# -------------------------------------------------------------------
+# 패키지 폴더 (Package-Restore 사용 권장)
+[Pp]ackages/
+# NuGet 패키지 파일
 *.nupkg
-*.nuget.cache
-*.nuget.props
-*.nuget.targets
-project.lock.json
-project.assets.json
+# NuGet이 생성하는 임시 파일
+*~.nupkg
 
-## Other
-# 테스트 결과, 프로파일링 파일 등
-*.trx
-*.vsp
-*.vspx
-TestResults/
+# ## 사용자별 설정 및 비밀 값 #
+# -------------------------------------------------------------------
+# 사용자별 비밀 값 (secrets.json)
+secrets.json
+user-secrets/
+# 로컬 개발 환경 설정 파일 (템플릿은 커밋, 실제 값은 제외)
+appsettings.Development.json
+
+# ## 테스트 관련 #
+# -------------------------------------------------------------------
+[Tt]est[Rr]esult*/
 *.coverage
-*.prof
+*.coveragexml
 
-# Roslyn 분석기 설정
-*.ruleset
+# ## OS 및 시스템 생성 파일 #
+# -------------------------------------------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
 
-# 서비스 종속성 파일
-Generated\
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# .NET 사용자 비밀
-**/secrets.json
+# ## 기타 일반적인 제외 항목 #
+# -------------------------------------------------------------------
+# 로그 파일
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # 임시 파일
-*~
-**/*.swp
+*.tmp
+*.bak
+*.swp
+
+# Visual Studio Code (함께 사용할 경우)
+.vscode/
+
+# 로컬 .NET 도구
+.config/dotnet-tools.json
+
+# 게시 프로필 (사용자별 설정 제외)
+Properties/PublishProfiles/*.pubxml.user
+
+# Rider의 로컬 히스토리
+/localhistory/
