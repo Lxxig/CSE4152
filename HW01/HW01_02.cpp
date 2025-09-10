@@ -2,8 +2,6 @@
 
 int PrimeFactorization(int N)
 {
-    // TODO: N이 0이나 1일 때도 다로 처리해야하나?
-    
     int Operations = 0;
     
     for (int i = 2; i * i <= N; ++i)
@@ -18,7 +16,7 @@ int PrimeFactorization(int N)
     // N이 소인수인 경우.
     if (N >= 2)
     {
-        return N;
+        return N + Operations;
     }
 
     return Operations;
