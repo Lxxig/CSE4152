@@ -1,17 +1,5 @@
 #include <iostream>
-
-static bool IsValid(int& OutValue, int InValueA, int InValueB)
-{
-    if (OutValue == 0 or OutValue == 1)
-    {
-        return true;
-    }
-    else
-    {
-        OutValue = -1;
-        return false;
-    }
-}
+#include <cassert>
 
 /**
  * @brief Asks person A if they know person B.
@@ -19,39 +7,28 @@ static bool IsValid(int& OutValue, int InValueA, int InValueB)
  * @param b The number of person B.
  * @return true if A knows B, otherwise returns false.
  */
-bool ask_a_to_know_b(int a, int b)
-{
-    int Input;
-    std::cout << a << " knows " << b << " ? ";
-    std::cin >> Input;
-    if (IsValid(Input, a, b))
-    {
-        return Input;
-    }
-
-    return Input;
+bool ask_a_to_know_b(int a, int b) {
+    int result;
+    std::cout << "? " << a << ' ' << b << std::endl;
+    std::cin >> result;
+    assert(result == 0 || result == 1);
+    return result;
 }
-
 
 /**
  * @brief Verifies if person x is a celebrity.
  * @param x The number of the person to verify, or -1 if there is no celebrity.
  * @return true if the answer is correct, otherwise returns false.
  */
-bool answer(int x)
-{
-    if (x == -1)
-    {
-        std::cout << "No celebrity" << std::endl;
-        return false;
-    }
-
-    std::cout << "Celebrity is " << x << std::endl;
-    return true;
+bool answer(int x) {
+    int result;
+    std::cout << "! " << x << std::endl;
+    std::cin >> result;
+    assert(result == 0 || result == 1);
+    return result;
 }
 
-int main()
-{
+int main(){
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
@@ -64,25 +41,30 @@ int main()
     // and `answer` will result in 0 points for this question.
 
     int Candidate = 1;
-    for (int i = 2; i <= n; i++)
+
+    for (int i = 2; i <= n; ++i)
     {
-        if (ask_a_to_know_b(Candidate, i))
+        if(ask_a_to_know_b(Candidate, i))
         {
             Candidate = i;
         }
     }
 
-    for (int i = 1; i <= n; i++)
+    for(int i=1; i < Candidate; ++i)
     {
-        if (Candidate == i) continue;
-
-        if (ask_a_to_know_b(Candidate, i))
+        if(ask_a_to_know_b(Candidate, i))
         {
             Candidate = -1;
-            break;
+            answer(Candidate);
+            return 0;
         }
+    }
 
-        if (!ask_a_to_know_b(i, Candidate))
+    for(int i = 1; i <= n; ++i)
+    {
+        if(i == Candidate) continue;
+
+        if(!ask_a_to_know_b(i, Candidate))
         {
             Candidate = -1;
             break;
@@ -90,6 +72,5 @@ int main()
     }
 
     answer(Candidate);
-
     return 0;
 }
