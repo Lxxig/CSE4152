@@ -27,8 +27,11 @@ Color grid[MAX][MAX];
 bool visited[MAX][MAX];
 
 // 8방향 탐색을 위한 배열 (상, 하, 좌, 우, 대각선 4방향)
-int di[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
-int dj[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+/*int di[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+int dj[8] = {-1, 0, 1, -1, 1, -1, 0, 1};*/
+
+int di[8] = {0, 0, 1, -1};
+int dj[8] = {1, -1, 0, 0};
 
 void bfs(int start_i, int start_j) {
     queue<pair<int, int>> q;
