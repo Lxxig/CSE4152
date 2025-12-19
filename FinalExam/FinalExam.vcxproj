@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ObservingObjects.cpp" />
+    <ClCompile Include="CrossConvolution.cpp" />
+    <ClCompile Include="SavvySeller.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
