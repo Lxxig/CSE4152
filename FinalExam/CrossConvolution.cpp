@@ -60,7 +60,7 @@ int main() {
             // 십자가 합 = 가로줄 합 + 세로줄 합 - 중심값
             long long result = rowSum + colSum - matrix[midR][midC];
 
-            cout << result << (j == outW - 1 ? "" : " ");
+            cout << result <<  " ";
         }
         cout << "\n";
     }
